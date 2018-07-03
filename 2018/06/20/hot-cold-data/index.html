@@ -6,14 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://tengz.me">
-  <title>Teng 的博客</title>
+  <title>hot-cold-data | Teng 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Teng 的博客">
-<meta property="og:url" content="http://tengz.me/index.html">
+  <meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hot-cold-data">
+<meta property="og:url" content="http://tengz.me/2018/06/20/hot-cold-data/index.html">
 <meta property="og:site_name" content="Teng 的博客">
+<meta property="og:updated_time" content="2018-06-20T02:45:59.805Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Teng 的博客">
+<meta name="twitter:title" content="hot-cold-data">
   
   
     <link rel="icon" href="/favicon.png">
@@ -141,43 +143,26 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Life-Cycle-of-Transactional-Data-in-In-memory-Databases" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-hot-cold-data" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/23/Life-Cycle-of-Transactional-Data-in-In-memory-Databases/">冷热分离综述</a>
+    <h1 class="article-title" itemprop="name">
+      hot-cold-data
     </h1>
   
 
         
-        <a href="/2018/06/23/Life-Cycle-of-Transactional-Data-in-In-memory-Databases/" class="archive-article-date">
-  	<time datetime="2018-06-23T15:08:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-23</time>
+        <a href="/2018/06/20/hot-cold-data/" class="archive-article-date">
+  	<time datetime="2018-06-20T02:45:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>对于一个数据库系统，存储成本和性能永远是一个trade-off。</p>
-<ul>
-<li><strong>存储介质DRAM、NVM、SSD、HDD，存储成本逐渐降低，访问延迟也逐渐升高。</strong>很多内存数据库为了维持数据库的高性能，采用了纯内存的设计（In-memory DB），内存中存放全量的数据，如果有持久化的需求，那么数据库会在Disk上对数据进行备份，但对于内存数据库，用户正常的查询不会涉及磁盘I/O。</li>
-<li><strong>数据存在冷热之分，冷热数据有着不同的访问延迟需求，也应该对应不同的存储成本。</strong>对于 In-memory 数据库，随着数据量的不断扩大，DRAM昂贵的存储成本必然无法满足全量数据的存储需求。实际上，对于每一条数据，未来被访问到的频率是不一样的，有的数据会被频繁访问（热数据），有的数据就不会再被访问（冷数据）。将热数据存储在高速介质上，将冷数据迁移到低速介质上，能将DBMS的性能维持在高水位的同时，尽量的节省存储成本。</li>
-</ul>
-<p>解决数据的冷热分离问题需要解决以下三个子问题：</p>
-<ul>
-<li>如何识别冷热数据，或者说如何基于历史的访问模式对数据未来的访问频率进行预测？</li>
-<li>何时识别，如何高效地进行识别才能不对内核正常事务处理产生影响？</li>
-<li>识别出的冷热数据该如何放置？</li>
-</ul>
-<p>如果很好的解决了冷热分离的问题，那么我们就完全可以兼得内存数据库的性能（miss ratio）和低廉的存储成本，从产品的角度来看，冷热分离是提高数据库性价比的一个关键点。</p>
-<p>解决数据的冷热分离问题有很多种做法，当前学术界的解决方案也各有千秋，无论从粒度、冷热模型、冷热预测、迁移时机、系统集成等方面都有着不同的设计和考量，这篇博客对当前学术界以及工业界在这个问题的探究以及取得的进展做了简单的总结。</p>
-        
-          <a class="article-more-a" href="/2018/06/23/Life-Cycle-of-Transactional-Data-in-In-memory-Databases/#more">more >></a>
         
       
 
@@ -186,34 +171,68 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Database</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">hot&cold data</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">paper</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://tengz.me/2018/06/20/hot-cold-data/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -233,8 +252,30 @@
 
 
 
+  
+  
+  
 
   
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://tengz.me/2018/06/20/hot-cold-data/",
+  owner: 'ZJUZT',
+  repo: 'blog-comments',
+  oauth: {
+    client_id: '6910acb5a72ace12f0a9',
+    client_secret: '74b7d712997d4f4c8cde2db904ade4444cf5d5e0',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -257,8 +298,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
@@ -331,18 +372,6 @@ MathJax.Hub.Queue(function() {
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">hot&cold data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">paper</a>
-              </li>
             
             <div class="clearfix"></div>
           </ul>
