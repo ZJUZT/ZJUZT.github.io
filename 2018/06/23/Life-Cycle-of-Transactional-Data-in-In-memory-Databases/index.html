@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://tengz.me">
-  <title>冷热分离综述 | Teng 的博客</title>
+  <title>A survey on Hot&amp;Data Separation | Teng 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="对于一个数据库系统，存储成本和性能永远是一个trade-off。  存储介质DRAM、NVM、SSD、HDD，存储成本逐渐降低，访问延迟也逐渐升高。很多数据库为了维持数据库的高性能，采用了纯内存的设计（In-memory DB），内存中存放全量的数据，如果有持久化的需求，那么数据库会在Disk上对数据进行备份，但对于内存数据库，用户正常的查询不会涉及磁盘I/O。 数据存在冷热之分，冷热数据有着不同">
 <meta name="keywords" content="Database,hot&cold data,paper">
 <meta property="og:type" content="article">
-<meta property="og:title" content="冷热分离综述">
+<meta property="og:title" content="A survey on Hot&Data Separation">
 <meta property="og:url" content="http://tengz.me/2018/06/23/Life-Cycle-of-Transactional-Data-in-In-memory-Databases/index.html">
 <meta property="og:site_name" content="Teng 的博客">
 <meta property="og:description" content="对于一个数据库系统，存储成本和性能永远是一个trade-off。  存储介质DRAM、NVM、SSD、HDD，存储成本逐渐降低，访问延迟也逐渐升高。很多数据库为了维持数据库的高性能，采用了纯内存的设计（In-memory DB），内存中存放全量的数据，如果有持久化的需求，那么数据库会在Disk上对数据进行备份，但对于内存数据库，用户正常的查询不会涉及磁盘I/O。 数据存在冷热之分，冷热数据有着不同">
 <meta property="og:image" content="http://tengz.me/assets/lifecycle/sap_lifecycle_arch.png">
-<meta property="og:updated_time" content="2018-07-23T02:54:28.189Z">
+<meta property="og:updated_time" content="2018-07-23T09:41:41.238Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="冷热分离综述">
+<meta name="twitter:title" content="A survey on Hot&Data Separation">
 <meta name="twitter:description" content="对于一个数据库系统，存储成本和性能永远是一个trade-off。  存储介质DRAM、NVM、SSD、HDD，存储成本逐渐降低，访问延迟也逐渐升高。很多数据库为了维持数据库的高性能，采用了纯内存的设计（In-memory DB），内存中存放全量的数据，如果有持久化的需求，那么数据库会在Disk上对数据进行备份，但对于内存数据库，用户正常的查询不会涉及磁盘I/O。 数据存在冷热之分，冷热数据有着不同">
 <meta name="twitter:image" content="http://tengz.me/assets/lifecycle/sap_lifecycle_arch.png">
   
@@ -155,7 +155,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      冷热分离综述
+      A survey on Hot&amp;Data Separation
     </h1>
   
 
