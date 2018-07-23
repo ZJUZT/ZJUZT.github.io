@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://tengz.me">
-  <title>Teng 的博客</title>
+  <title>冷热分离综述 | Teng 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Teng 的博客">
-<meta property="og:url" content="http://tengz.me/index.html">
+  <meta name="description" content="对于一个数据库系统，存储成本和性能永远是一个trade-off。  存储介质DRAM、NVM、SSD、HDD，存储成本逐渐降低，访问延迟也逐渐升高。很多数据库为了维持数据库的高性能，采用了纯内存的设计（In-memory DB），内存中存放全量的数据，如果有持久化的需求，那么数据库会在Disk上对数据进行备份，但对于内存数据库，用户正常的查询不会涉及磁盘I/O。 数据存在冷热之分，冷热数据有着不同">
+<meta name="keywords" content="Database,hot&cold data,paper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="冷热分离综述">
+<meta property="og:url" content="http://tengz.me/2018/06/23/cjjxoobsc0000yjr9bsoxgv3m/index.html">
 <meta property="og:site_name" content="Teng 的博客">
+<meta property="og:description" content="对于一个数据库系统，存储成本和性能永远是一个trade-off。  存储介质DRAM、NVM、SSD、HDD，存储成本逐渐降低，访问延迟也逐渐升高。很多数据库为了维持数据库的高性能，采用了纯内存的设计（In-memory DB），内存中存放全量的数据，如果有持久化的需求，那么数据库会在Disk上对数据进行备份，但对于内存数据库，用户正常的查询不会涉及磁盘I/O。 数据存在冷热之分，冷热数据有着不同">
+<meta property="og:image" content="http://tengz.me/assets/lifecycle/sap_lifecycle_arch.png">
+<meta property="og:updated_time" content="2018-07-23T02:54:28.189Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Teng 的博客">
+<meta name="twitter:title" content="冷热分离综述">
+<meta name="twitter:description" content="对于一个数据库系统，存储成本和性能永远是一个trade-off。  存储介质DRAM、NVM、SSD、HDD，存储成本逐渐降低，访问延迟也逐渐升高。很多数据库为了维持数据库的高性能，采用了纯内存的设计（In-memory DB），内存中存放全量的数据，如果有持久化的需求，那么数据库会在Disk上对数据进行备份，但对于内存数据库，用户正常的查询不会涉及磁盘I/O。 数据存在冷热之分，冷热数据有着不同">
+<meta name="twitter:image" content="http://tengz.me/assets/lifecycle/sap_lifecycle_arch.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -141,98 +148,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-The Trend of Factorization Machine" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Life-Cycle-of-Transactional-Data-in-In-memory-Databases" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/13/cjjxoobsg0002yjr96hm1mtpv/">The Trend of Factorization Machines</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/13/cjjxoobsg0002yjr96hm1mtpv/" class="archive-article-date">
-  	<time datetime="2018-07-13T08:10:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Factorization Machine （FM），因子分解机，是一种利用交互特征，同时维持系数矩阵低秩的一种算法。FM凭借其优秀的泛化能力、高效的推理能力、擅长稀疏特征的求解等特性，被广泛应用于广告点击率预测（CTR）、推荐系统等场景。</p>
-<p>FM的的缺点也很明显，我们一般提到的FM都是指二阶的特征交叉，对缺少对高维度（三阶、四阶）的特征组合的刻画。虽然近年来一些High-order的FM解决方案也在被探讨，但是高阶FM的计算复杂度依旧是一个比较难解决的问题，关于High-order的FM是一个独立的命题，我们在这篇文章中暂且按下不表。</p>
-<p>针对FM高阶组合特征表达能力不足的问题，神经网络在一定程度上可以进行弥补。神经网络理论上可以拟合任意的函数，随着层数的增加，DNN的表达能力在增强，交叉特征的阶数也在增加。DeepFM就是通过Deep和FM相互结合，利用FM对于低阶交互特征的刻画，和DNN对于高阶交互特征的捕捉，在推荐和广告点击预测的数据集上都取得了较好的效果。</p>
-        
-          <a class="article-more-a" href="/2018/07/13/cjjxoobsg0002yjr96hm1mtpv/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">paper</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">recsys</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Life-Cycle-of-Transactional-Data-in-In-memory-Databases" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/23/cjjxoobsc0000yjr9bsoxgv3m/">冷热分离综述</a>
+    <h1 class="article-title" itemprop="name">
+      冷热分离综述
     </h1>
   
 
@@ -258,9 +181,18 @@
 </ul>
 <p>如果很好的解决了冷热分离的问题，那么我们就完全可以兼得内存数据库的性能（miss ratio）和低廉的存储成本，从产品的角度来看，冷热分离是提高数据库性价比的一个关键点。</p>
 <p>解决数据的冷热分离问题有很多种做法，当前学术界的解决方案也各有千秋，无论从粒度、冷热模型、冷热预测、迁移时机、系统集成等方面都有着不同的设计和考量，这篇博客对当前学术界以及工业界在这个问题的探究以及取得的进展做了简单的总结。</p>
-        
-          <a class="article-more-a" href="/2018/06/23/cjjxoobsc0000yjr9bsoxgv3m/#more">more >></a>
-        
+<a id="more"></a>
+<h2 id="Lifecycle-of-data-in-In-memory-Databases-–-SAP-Labs"><a href="#Lifecycle-of-data-in-In-memory-Databases-–-SAP-Labs" class="headerlink" title="Lifecycle of data in In-memory Databases – SAP Labs"></a>Lifecycle of data in In-memory Databases – SAP Labs</h2><p>SAP实验室的这篇文章的动机是为了解决内存数据库存储容量的问题，即使现在DRAM的容量很大，但是存储成本和SSD、HHD相比还是有着数量级的差距，而且，每一个数据的存储成本需求是不一样的，有的数据访问频繁，可能需要存储在内存中，有的数据访问频率很低，那就完全可以存储到廉价介质中，即使存在长尾的访问需求，访问延迟也是可以接受的。</p>
+<p>首先给出SAP包含冷热模型的数据库架构 (BTrim – Business Transaction in memory)：</p>
+<center><br><br><img src="/assets/lifecycle/sap_lifecycle_arch.png" width="50%" height="50%"><br><br></center>
+
+<p>BTrim 是一个传统的面向page的磁盘存储和面向row的内存存储的混合数据库，主要包含以下几个核心模块：</p>
+<ul>
+<li>IMRS （In Memory Row Store），顾名思义，按照行的粒度存储热数据</li>
+<li>R/W Buffer Cache，传统数据的Buffer Cache，以Page为单位和磁盘进行交互</li>
+<li>ILM (Information Lifecycle Management)</li>
+</ul>
+
       
 
       
@@ -292,10 +224,73 @@
       
 
       
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://tengz.me/2018/06/23/cjjxoobsc0000yjr9bsoxgv3m/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/13/cjjxoobsg0002yjr96hm1mtpv/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">The Trend of Factorization Machines</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -315,8 +310,30 @@
 
 
 
+  
+  
+  
 
   
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://tengz.me/2018/06/23/cjjxoobsc0000yjr9bsoxgv3m/",
+  owner: 'ZJUZT',
+  repo: 'blog-comments',
+  oauth: {
+    client_id: '6910acb5a72ace12f0a9',
+    client_secret: '74b7d712997d4f4c8cde2db904ade4444cf5d5e0',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -339,8 +356,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
