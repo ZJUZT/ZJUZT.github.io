@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://tengz.me">
-  <title>Tag: recsys | Teng 的博客</title>
+  <title>The Trend of Factorization Machines | Teng 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Teng 的博客">
-<meta property="og:url" content="http://tengz.me/tags/recsys/index.html">
+  <meta name="description" content="Factorization Machine （FM），因子分解机，是一种利用交互特征，同时维持系数矩阵低秩的一种算法。FM凭借其优秀的泛化能力、高效的推理能力、擅长稀疏特征的求解等特性，被广泛应用于广告点击率预测（CTR）、推荐系统等场景。 FM的的缺点也很明显，我们一般提到的FM都是指二阶的特征交叉，对缺少对高维度（三阶、四阶）的特征组合的刻画。虽然近年来一些High-order的FM解决方案也">
+<meta name="keywords" content="paper,machine learning,recsys">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Trend of Factorization Machines">
+<meta property="og:url" content="http://tengz.me/2018/07/13/The Trend of Factorization Machine/index.html">
 <meta property="og:site_name" content="Teng 的博客">
+<meta property="og:description" content="Factorization Machine （FM），因子分解机，是一种利用交互特征，同时维持系数矩阵低秩的一种算法。FM凭借其优秀的泛化能力、高效的推理能力、擅长稀疏特征的求解等特性，被广泛应用于广告点击率预测（CTR）、推荐系统等场景。 FM的的缺点也很明显，我们一般提到的FM都是指二阶的特征交叉，对缺少对高维度（三阶、四阶）的特征组合的刻画。虽然近年来一些High-order的FM解决方案也">
+<meta property="og:updated_time" content="2018-07-23T02:45:56.539Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Teng 的博客">
+<meta name="twitter:title" content="The Trend of Factorization Machines">
+<meta name="twitter:description" content="Factorization Machine （FM），因子分解机，是一种利用交互特征，同时维持系数矩阵低秩的一种算法。FM凭借其优秀的泛化能力、高效的推理能力、擅长稀疏特征的求解等特性，被广泛应用于广告点击率预测（CTR）、推荐系统等场景。 FM的的缺点也很明显，我们一般提到的FM都是指二阶的特征交叉，对缺少对高维度（三阶、四阶）的特征组合的刻画。虽然近年来一些High-order的FM解决方案也">
   
   
     <link rel="icon" href="/favicon.png">
@@ -141,36 +146,47 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-The Trend of Factorization Machine" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/13/The Trend of Factorization Machine/" class="archive-article-date">
-  	<time datetime="2018-07-13T08:10:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/13/The Trend of Factorization Machine/">The Trend of Factorization Machines</a>
+    <h1 class="article-title" itemprop="name">
+      The Trend of Factorization Machines
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/07/13/The Trend of Factorization Machine/" class="archive-article-date">
+  	<time datetime="2018-07-13T08:10:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Factorization Machine （FM），因子分解机，是一种利用交互特征，同时维持系数矩阵低秩的一种算法。FM凭借其优秀的泛化能力、高效的推理能力、擅长稀疏特征的求解等特性，被广泛应用于广告点击率预测（CTR）、推荐系统等场景。</p>
+<p>FM的的缺点也很明显，我们一般提到的FM都是指二阶的特征交叉，对缺少对高维度（三阶、四阶）的特征组合的刻画。虽然近年来一些High-order的FM解决方案也在被探讨，但是高阶FM的计算复杂度依旧是一个比较难解决的问题，关于High-order的FM是一个独立的命题，我们在这篇文章中暂且按下不表。</p>
+<p>针对FM高阶组合特征表达能力不足的问题，神经网络在一定程度上可以进行弥补。神经网络理论上可以拟合任意的函数，随着层数的增加，DNN的表达能力在增强，交叉特征的阶数也在增加。DeepFM就是通过Deep和FM相互结合，利用FM对于低阶交互特征的刻画，和DNN对于高阶交互特征的捕捉，在推荐和广告点击预测的数据集上都取得了较好的效果。</p>
+<a id="more"></a>
+<h2 id="从FM开始谈起"><a href="#从FM开始谈起" class="headerlink" title="从FM开始谈起"></a>从FM开始谈起</h2><p>每一个算法的提出和演进都有不同的背景，FM的提出旨在解决以下三个问题：</p>
+<ul>
+<li>线性算法无法准确刻画非线性可分的数据集，即使通过人为构造特征可以一定程度缓解这个问题（事实上很多公司现在也是这么做的，特征工程+LR），但是太依赖算法工程师对于业务的理解和特征工程的经验；</li>
+<li>复杂算法的开销较大，在广告推荐领域，特征维度是非常高的，很多ID（用户ID、商品ID）类特征经过one-hot编码后很容易就达到几亿这样的维度，面对如此高维的特征，任何非线性复杂度的算法开销在工业界都是很难被接受的；</li>
+<li>除了计算开销的问题，特征的稀疏性也会给算法带来影响，很多系数对应的特征位出现频次可能会非常低，这样训练得到的模型的置信度是非常低的，鲁棒性也很差。</li>
+</ul>
+<p>如果你的业务问题恰好也面临以上三个问题，我建议你不妨尝试一下FM以及FM变种的模型。</p>
+<p>言归正传，我们先简单的介绍一下FM的思想，假定你需要处理的sample维度为 $p$:<br>$$<br>\begin{bmatrix}<br>   x_1, x_2,x_3,…,x_p<br>   \end{bmatrix}<br>$$<br>线性分类器需要寻找一个这样的一个最优分界面<br>$$<br>y(x|w) = \sum_{i=1}^{p}w_ix_i<br>$$<br>显然这样的模型只能处理线性可分的数据集，我们很容易想到多项式（polynomial）分类器<br>$$<br>y(x|w, Z) = \sum_{i=1}^{p}w_ix_i + \sum_{j=1}^{p}\sum_{j’=j}^{p}z_{jj’}x_jx_j’<br>$$<br>对于多项式分类器，我们引入和一个系数矩阵$Z\in\Re^{p\times p}$，我们为每一个特征交叉项都分配了一个独有的系数，理论上讲，多项式分类器对于交叉特征的刻画是非常好的，但是在推荐领域，不是每一个特征交叉都会出现在训练集中，实际上，我们的任务就是去预测哪些特征交叉可能会发生（考虑一个简单的为用户推荐电影的场景）。</p>
+<p>因此，我们需要一个低秩的系数矩阵$V\in\Re^{p\times k} (k \ll p)$来对交叉特征进行刻画：<br>$$<br>\begin{bmatrix}<br>v_{11}, v_{12}, …, v_{1k} \\<br>v_{21}, v_{22}, …, v_{2k} \\<br>…\\<br>v_{p1}, v_{p2}, …, v_{pk} \\<br>\end{bmatrix}<br>$$</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -190,19 +206,126 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://tengz.me/2018/07/13/The Trend of Factorization Machine/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/06/23/Life-Cycle-of-Transactional-Data-in-In-memory-Databases/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          冷热分离综述
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://tengz.me/2018/07/13/The Trend of Factorization Machine/",
+  owner: 'ZJUZT',
+  repo: 'blog-comments',
+  oauth: {
+    client_id: '6910acb5a72ace12f0a9',
+    client_secret: '74b7d712997d4f4c8cde2db904ade4444cf5d5e0',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -225,9 +348,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
