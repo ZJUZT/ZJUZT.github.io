@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://tengz.me/2018/07/13/The Trend of Factorization Machine/index.html">
 <meta property="og:site_name" content="Teng 的博客">
 <meta property="og:description" content="Factorization Machine （FM），因子分解机，是一种利用交互特征，同时维持系数矩阵低秩的一种算法。FM凭借其优秀的泛化能力、高效的推理能力、擅长稀疏特征的求解等特性，被广泛应用于广告点击率预测（CTR）、推荐系统等场景。 FM的的缺点也很明显，我们一般提到的FM都是指二阶的特征交叉，对缺少对高维度（三阶、四阶）的特征组合的刻画。虽然近年来一些High-order的FM解决方案也">
-<meta property="og:updated_time" content="2018-07-23T02:45:56.539Z">
+<meta property="og:updated_time" content="2018-07-23T02:48:15.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Trend of Factorization Machines">
 <meta name="twitter:description" content="Factorization Machine （FM），因子分解机，是一种利用交互特征，同时维持系数矩阵低秩的一种算法。FM凭借其优秀的泛化能力、高效的推理能力、擅长稀疏特征的求解等特性，被广泛应用于广告点击率预测（CTR）、推荐系统等场景。 FM的的缺点也很明显，我们一般提到的FM都是指二阶的特征交叉，对缺少对高维度（三阶、四阶）的特征组合的刻画。虽然近年来一些High-order的FM解决方案也">
@@ -177,7 +177,7 @@
 <li>除了计算开销的问题，特征的稀疏性也会给算法带来影响，很多系数对应的特征位出现频次可能会非常低，这样训练得到的模型的置信度是非常低的，鲁棒性也很差。</li>
 </ul>
 <p>如果你的业务问题恰好也面临以上三个问题，我建议你不妨尝试一下FM以及FM变种的模型。</p>
-<p>言归正传，我们先简单的介绍一下FM的思想，假定你需要处理的sample维度为 $p$:<br>$$<br>\begin{bmatrix}<br>   x_1, x_2,x_3,…,x_p<br>   \end{bmatrix}<br>$$<br>线性分类器需要寻找一个这样的一个最优分界面<br>$$<br>y(x|w) = \sum_{i=1}^{p}w_ix_i<br>$$<br>显然这样的模型只能处理线性可分的数据集，我们很容易想到多项式（polynomial）分类器<br>$$<br>y(x|w, Z) = \sum_{i=1}^{p}w_ix_i + \sum_{j=1}^{p}\sum_{j’=j}^{p}z_{jj’}x_jx_j’<br>$$<br>对于多项式分类器，我们引入和一个系数矩阵$Z\in\Re^{p\times p}$，我们为每一个特征交叉项都分配了一个独有的系数，理论上讲，多项式分类器对于交叉特征的刻画是非常好的，但是在推荐领域，不是每一个特征交叉都会出现在训练集中，实际上，我们的任务就是去预测哪些特征交叉可能会发生（考虑一个简单的为用户推荐电影的场景）。</p>
+<p>言归正传，我们先简单的介绍一下FM的思想，假定你需要处理的sample维度为 $p$:<br>$$<br>\begin{bmatrix}<br>   x_1, x_2,x_3,…,x_p<br>   \end{bmatrix}<br>$$<br>线性分类器需要寻找一个这样的一个最优分界面<br>$$<br>y(x|w) = \sum_{i=1}^{p}w_ix_i<br>$$<br>显然这样的模型只能处理线性可分的数据集，我们很容易想到多项式（polynomial）分类器<br>$$<br>y(x|w, Z) = \sum_{i=1}^{p}w_ix_i + \sum_{j=1}^{p}\sum_{j’=j}^{p}z_{jj’}x_jx_j’<br>$$<br>多项式分类器引入了一个系数矩阵$Z\in\Re^{p\times p}$，我们为每一个特征交叉项都分配了一个独有的系数，理论上讲，多项式分类器对于交叉特征的刻画是非常好的，但是在推荐领域，不是每一个特征交叉都会出现在训练集中，实际上，我们的任务就是去预测哪些特征交叉可能会发生（考虑一个简单的为用户推荐电影的场景）。</p>
 <p>因此，我们需要一个低秩的系数矩阵$V\in\Re^{p\times k} (k \ll p)$来对交叉特征进行刻画：<br>$$<br>\begin{bmatrix}<br>v_{11}, v_{12}, …, v_{1k} \\<br>v_{21}, v_{22}, …, v_{2k} \\<br>…\\<br>v_{p1}, v_{p2}, …, v_{pk} \\<br>\end{bmatrix}<br>$$</p>
 
       
@@ -423,6 +423,14 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">hot&cold data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">paper</a>
               </li>
              
@@ -432,14 +440,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">recsys</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">hot&cold data</a>
               </li>
             
             <div class="clearfix"></div>
