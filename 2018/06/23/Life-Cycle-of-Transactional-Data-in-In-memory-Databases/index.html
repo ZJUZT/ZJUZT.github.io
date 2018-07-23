@@ -15,12 +15,12 @@
 <meta property="og:url" content="http://tengz.me/2018/06/23/Life-Cycle-of-Transactional-Data-in-In-memory-Databases/index.html">
 <meta property="og:site_name" content="Teng 的博客">
 <meta property="og:description" content="对于一个数据库系统，存储成本和性能永远是一个trade-off。  存储介质DRAM、NVM、SSD、HDD，存储成本逐渐降低，访问延迟也逐渐升高。很多数据库为了维持数据库的高性能，采用了纯内存的设计（In-memory DB），内存中存放全量的数据，如果有持久化的需求，那么数据库会在Disk上对数据进行备份，但对于内存数据库，用户正常的查询不会涉及磁盘I/O。 数据存在冷热之分，冷热数据有着不同">
-<meta property="og:image" content="http://tengz.me/2018/06/23/assets/lifecycle/sap_lifecycle_arch.png">
-<meta property="og:updated_time" content="2018-07-13T08:15:11.575Z">
+<meta property="og:image" content="http://tengz.me/assets/lifecycle/sap_lifecycle_arch.png">
+<meta property="og:updated_time" content="2018-07-23T02:54:28.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="冷热分离综述">
 <meta name="twitter:description" content="对于一个数据库系统，存储成本和性能永远是一个trade-off。  存储介质DRAM、NVM、SSD、HDD，存储成本逐渐降低，访问延迟也逐渐升高。很多数据库为了维持数据库的高性能，采用了纯内存的设计（In-memory DB），内存中存放全量的数据，如果有持久化的需求，那么数据库会在Disk上对数据进行备份，但对于内存数据库，用户正常的查询不会涉及磁盘I/O。 数据存在冷热之分，冷热数据有着不同">
-<meta name="twitter:image" content="http://tengz.me/2018/06/23/assets/lifecycle/sap_lifecycle_arch.png">
+<meta name="twitter:image" content="http://tengz.me/assets/lifecycle/sap_lifecycle_arch.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -184,7 +184,7 @@
 <a id="more"></a>
 <h2 id="Lifecycle-of-data-in-In-memory-Databases-–-SAP-Labs"><a href="#Lifecycle-of-data-in-In-memory-Databases-–-SAP-Labs" class="headerlink" title="Lifecycle of data in In-memory Databases – SAP Labs"></a>Lifecycle of data in In-memory Databases – SAP Labs</h2><p>SAP实验室的这篇文章的动机是为了解决内存数据库存储容量的问题，即使现在DRAM的容量很大，但是存储成本和SSD、HHD相比还是有着数量级的差距，而且，每一个数据的存储成本需求是不一样的，有的数据访问频繁，可能需要存储在内存中，有的数据访问频率很低，那就完全可以存储到廉价介质中，即使存在长尾的访问需求，访问延迟也是可以接受的。</p>
 <p>首先给出SAP包含冷热模型的数据库架构 (BTrim – Business Transaction in memory)：</p>
-<center><br><br><img src="../assets/lifecycle/sap_lifecycle_arch.png" width="50%" height="50%"><br><br></center>
+<center><br><br><img src="/assets/lifecycle/sap_lifecycle_arch.png" width="50%" height="50%"><br><br></center>
 
 <p>BTrim 是一个传统的面向page的磁盘存储和面向row的内存存储的混合数据库，主要包含以下几个核心模块：</p>
 <ul>
