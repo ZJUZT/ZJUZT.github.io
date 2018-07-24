@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://tengz.me/2018/07/23/Metrics-used-in-classification-problem/index.html">
 <meta property="og:site_name" content="Teng 的博客">
 <meta property="og:description" content="在机器学习中，对于二分类问题，我们如何去衡量一个模型的性能，在很多场景下，accuracy已经很难区分模型的好坏（考虑一个垃圾邮件过滤的场景），在这篇文章中我们对 $logloss、auc、gini、ks$ 等指标进行了归纳，在以后评判一个模型好坏的时候，我们需要结合实际业务的需求，合理地选择模型的评价指标。">
-<meta property="og:updated_time" content="2018-07-23T11:09:05.469Z">
+<meta property="og:updated_time" content="2018-07-24T02:59:17.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Metrics used in classification problem">
 <meta name="twitter:description" content="在机器学习中，对于二分类问题，我们如何去衡量一个模型的性能，在很多场景下，accuracy已经很难区分模型的好坏（考虑一个垃圾邮件过滤的场景），在这篇文章中我们对 $logloss、auc、gini、ks$ 等指标进行了归纳，在以后评判一个模型好坏的时候，我们需要结合实际业务的需求，合理地选择模型的评价指标。">
@@ -168,6 +168,30 @@
       
         <p>在机器学习中，对于二分类问题，我们如何去衡量一个模型的性能，在很多场景下，accuracy已经很难区分模型的好坏（考虑一个垃圾邮件过滤的场景），在这篇文章中我们对 $logloss、auc、gini、ks$ 等指标进行了归纳，在以后评判一个模型好坏的时候，我们需要结合实际业务的需求，合理地选择模型的评价指标。</p>
 <a id="more"></a>
+<h2 id="Accuracy-的不足"><a href="#Accuracy-的不足" class="headerlink" title="Accuracy 的不足"></a>Accuracy 的不足</h2><p>对于一个二分类问题，比对预测结果和真实值，我们可以将预测分为以下四种情况：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Gold Class 1</strong></th>
+<th><strong>Gold Class 2</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Observed Class 1</strong></td>
+<td>TP</td>
+<td>FP</td>
+</tr>
+<tr>
+<td><strong>Observed Class 2</strong></td>
+<td>FN</td>
+<td>TN</td>
+</tr>
+</tbody>
+</table>
+<p>对于二分类问题，准确性这一指标使我们最直观可以想到的：<br>$$<br>acc = \frac{TP+TN}{TP+FP+FN+TN}<br>$$</p>
+
       
 
       
@@ -391,11 +415,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">hot&cold data</a>
+                <a href="javascript:void(0)" class="js-tag color2">recsys</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -403,11 +427,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">recsys</a>
+                <a href="javascript:void(0)" class="js-tag color4">hot&cold data</a>
               </li>
             
             <div class="clearfix"></div>
