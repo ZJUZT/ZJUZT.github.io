@@ -165,7 +165,7 @@
       
         <center><br><br><img src="/assets/binary_metrics/sz_1.jpg" width="100%" height="50%" /><br><br></center>
 
-<p>在机器学习中，对于二分类问题，我们如何去衡量一个模型的性能，在很多场景下，accuracy已经很难区分模型的好坏（考虑一个垃圾邮件过滤的场景），在这篇文章中我们对 $logloss、F1、auc、gini、ks$ 等指标进行了归纳，在以后评判一个模型好坏的时候，我们需要结合实际业务的需求，合理地选择模型的评价指标。</p>
+<p>在机器学习中，选取合适的指标来衡量一个模型的性能是一个很有挑战的事情。在很多场景下，accuracy已经很难区分模型的好坏（考虑一个垃圾邮件过滤的场景），在这篇文章中我们对 $logloss、F1、auc、gini、ks$ 等指标进行了归纳，在以后评判一个模型好坏的时候，我们需要结合实际业务的需求，合理地选择模型的评价指标。</p>
         
           <a class="article-more-a" href="/2018/07/23/Metrics-used-in-classification-problem/#more">more >></a>
         
@@ -336,7 +336,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>对于一个数据库系统，存储成本和性能永远是一个trade-off。</p>
+        <center><br><br><img src="/assets/lifecycle/sz_2.jpg" width="100%" height="50%" /><br><br></center>
+
+<p>对于一个数据库系统，存储成本和性能永远是一个trade-off。</p>
 <ul>
 <li><strong>存储介质DRAM、NVM、SSD、HDD，存储成本逐渐降低，访问延迟也逐渐升高。</strong>很多数据库为了维持数据库的高性能，采用了纯内存的设计（In-memory DB），内存中存放全量的数据，如果有持久化的需求，那么数据库会在Disk上对数据进行备份，但对于内存数据库，用户正常的查询不会涉及磁盘I/O。</li>
 <li><strong>数据存在冷热之分，冷热数据有着不同的访问延迟需求，也应该对应不同的存储成本。</strong>对于 In-memory 数据库，随着数据量的不断扩大，DRAM昂贵的存储成本必然无法满足全量数据的存储需求。实际上，对于每一条数据，未来被访问到的频率是不一样的，有的数据会被频繁访问（热数据），有的数据就不会再被访问（冷数据）。将热数据存储在高速介质上，将冷数据迁移到低速介质上，能将DBMS的性能维持在高水位的同时，尽量的节省存储成本。</li>
