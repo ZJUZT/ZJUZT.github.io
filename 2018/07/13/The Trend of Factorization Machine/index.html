@@ -9,18 +9,18 @@
   <title>The Trend of Factorization Machines | Teng 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Factorization Machine （FM），中文名称因子分解机，是一种利用交互特征，同时维持系数矩阵低秩的一种算法。FM凭借其优秀的泛化能力、高效的推理能力、擅长稀疏特征的求解等特性，被广泛应用于广告点击率预测（CTR）、推荐系统等场景。 本篇文章对FM进行以下几个方面的介绍：  FM提出的背景以及算法简介 FM的演进 High-order FM，我们一般提到的FM都是指二阶的特征交">
-<meta name="keywords" content="machine learning,recsys,paper">
+<meta name="keywords" content="paper,machine learning,recsys">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Trend of Factorization Machines">
 <meta property="og:url" content="http://tengz.me/2018/07/13/The Trend of Factorization Machine/index.html">
 <meta property="og:site_name" content="Teng 的博客">
 <meta property="og:description" content="Factorization Machine （FM），中文名称因子分解机，是一种利用交互特征，同时维持系数矩阵低秩的一种算法。FM凭借其优秀的泛化能力、高效的推理能力、擅长稀疏特征的求解等特性，被广泛应用于广告点击率预测（CTR）、推荐系统等场景。 本篇文章对FM进行以下几个方面的介绍：  FM提出的背景以及算法简介 FM的演进 High-order FM，我们一般提到的FM都是指二阶的特征交">
 <meta property="og:image" content="http://tengz.me/assets/fm/szw.jpg">
-<meta property="og:image" content="http://tengz.me/assets/fm/fm_graph.jpg">
+<meta property="og:image" content="http://tengz.me/assets/fm/fm_graph.png">
 <meta property="og:image" content="http://tengz.me/assets/fm/embedding.jpg">
 <meta property="og:image" content="http://tengz.me/assets/fm/deepfm.jpg">
 <meta property="og:image" content="http://tengz.me/assets/fm/afm.jpg">
-<meta property="og:updated_time" content="2018-08-02T12:59:52.505Z">
+<meta property="og:updated_time" content="2018-08-02T13:50:18.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Trend of Factorization Machines">
 <meta name="twitter:description" content="Factorization Machine （FM），中文名称因子分解机，是一种利用交互特征，同时维持系数矩阵低秩的一种算法。FM凭借其优秀的泛化能力、高效的推理能力、擅长稀疏特征的求解等特性，被广泛应用于广告点击率预测（CTR）、推荐系统等场景。 本篇文章对FM进行以下几个方面的介绍：  FM提出的背景以及算法简介 FM的演进 High-order FM，我们一般提到的FM都是指二阶的特征交">
@@ -198,7 +198,7 @@
 <p>如果你的业务恰好也面临以上三个问题，我建议你不妨尝试一下FM以及FM变种的模型。</p>
 <p>言归正传，我们先简单的介绍一下FM的思想，假定你需要处理的sample维度为 $p$:<br>$$<br>\begin{bmatrix}<br>   x_1, x_2,x_3,…,x_p<br>   \end{bmatrix}<br>$$<br>线性分类器需要寻找一个这样的一个最优分界面<br>$$<br>y(x|w) = \sum_{i=1}^{p}w_ix_i<br>$$<br>显然这样的模型只能处理线性可分的数据集，我们很容易想到多项式（polynomial）分类器<br>$$<br>y(x|w, Z) = \sum_{i=1}^{p}w_ix_i + \sum_{j=1}^{p}\sum_{j’=j+1}^{p}z_{jj’}x_jx_j’<br>$$<br>多项式分类器引入了一个系数矩阵$Z\in\Re^{p\times p}$，我们为每一个特征交叉项都分配了一个独有的系数，理论上讲，多项式分类器对于交叉特征的刻画是非常好的，但是在推荐领域，不是每一个特征交叉都会出现在训练集中，实际上，我们的任务就是去预测哪些特征交叉可能会发生（考虑一个简单的为用户推荐电影的场景）。</p>
 <p>因此，我们需要一个低秩的系数矩阵$V\in\Re^{p\times k} (k \ll p)$来对交叉特征进行刻画：<br>$$<br>\begin{bmatrix}<br>v_{11}, v_{12}, …, v_{1k} \\<br>v_{21}, v_{22}, …, v_{2k} \\<br>…\\<br>v_{p1}, v_{p2}, …, v_{pk} \\<br>\end{bmatrix}<br>$$<br>至此，我们给出FM的公式：<br>$$<br>y(x|w,V) = \sum_{i=1}^{p}w_ix_i+\sum_{j=1}^{p}\sum_{j’=j+1}^px_jx_j’\sum_{f=1}^kv_{jf}v_{j’f}<br>$$</p>
-<h2 id="FM的演进路线"><a href="#FM的演进路线" class="headerlink" title="FM的演进路线"></a>FM的演进路线</h2><center><br><br><img src="/assets/fm/fm_graph.jpg" width="80%" height="50%"><br><br></center>
+<h2 id="FM的演进路线"><a href="#FM的演进路线" class="headerlink" title="FM的演进路线"></a>FM的演进路线</h2><center><br><br><img src="/assets/fm/fm_graph.png" width="80%" height="50%"><br><br></center>
 
 <h2 id="FM-NN"><a href="#FM-NN" class="headerlink" title="FM + NN"></a>FM + NN</h2><p>FM和NN的结合的难点在feature的表示，对于FM而言，稀疏的特征更能展现FM的优势，而NN通常采用全连接的网络结构，dense的feature更适合网络的拟合。</p>
 <p>那么如何将feature进行处理并根据FM和NN的特点来输入到对应的子模型中呢？在这里，我们借鉴了NLP领域中$ embedding$的思想，在NLP中，需要把word转化为向量，由于word经过one-hot编码后非常稀疏，embeeding通过构造一个矩阵来讲一个稀疏向量转化为指定维度的dense向量。</p>
@@ -219,15 +219,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">paper</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">machine learning</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">recsys</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">paper</a>
         		</li>
       		
 		</ul>
@@ -447,19 +447,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">recsys</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">hot&cold data</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">paper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">recsys</a>
               </li>
              
               <li class="article-tag-list-item">
