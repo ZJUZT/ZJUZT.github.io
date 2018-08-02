@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://tengz.me/assets/fm/fm_graph.jpg">
 <meta property="og:image" content="http://tengz.me/assets/fm/deepfm.jpg">
 <meta property="og:image" content="http://tengz.me/assets/fm/afm.jpg">
-<meta property="og:updated_time" content="2018-07-31T06:42:20.395Z">
+<meta property="og:updated_time" content="2018-08-01T07:54:05.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Trend of Factorization Machines">
 <meta name="twitter:description" content="Factorization Machine （FM），中文名称因子分解机，是一种利用交互特征，同时维持系数矩阵低秩的一种算法。FM凭借其优秀的泛化能力、高效的推理能力、擅长稀疏特征的求解等特性，被广泛应用于广告点击率预测（CTR）、推荐系统等场景。 本篇文章对FM进行以下几个方面的介绍：  FM提出的背景以及算法简介 FM的演进 High-order FM，我们一般提到的FM都是指二阶的特征交">
@@ -199,7 +199,9 @@
 <p>因此，我们需要一个低秩的系数矩阵$V\in\Re^{p\times k} (k \ll p)$来对交叉特征进行刻画：<br>$$<br>\begin{bmatrix}<br>v_{11}, v_{12}, …, v_{1k} \\<br>v_{21}, v_{22}, …, v_{2k} \\<br>…\\<br>v_{p1}, v_{p2}, …, v_{pk} \\<br>\end{bmatrix}<br>$$<br>至此，我们给出FM的公式：<br>$$<br>y(x|w,V) = \sum_{i=1}^{p}w_ix_i+\sum_{j=1}^{p}\sum_{j’=j+1}^px_jx_j’\sum_{f=1}^kv_{jf}v_{j’f}<br>$$</p>
 <h2 id="FM的演进路线"><a href="#FM的演进路线" class="headerlink" title="FM的演进路线"></a>FM的演进路线</h2><center><br><br><img src="/assets/fm/fm_graph.jpg" width="80%" height="50%"><br><br></center>
 
-<h2 id="FM-NN"><a href="#FM-NN" class="headerlink" title="FM + NN"></a>FM + NN</h2><h3 id="DeepFM"><a href="#DeepFM" class="headerlink" title="DeepFM"></a>DeepFM</h3><center><br><br><img src="/assets/fm/deepfm.jpg" width="80%" height="50%"><br><br></center>
+<h2 id="FM-NN"><a href="#FM-NN" class="headerlink" title="FM + NN"></a>FM + NN</h2><p>FM和NN的结合的难点在feature的表示，对于FM而言，稀疏的特征更能展现FM的优势，而NN通常采用全连接的网络结构，dense的feature更适合网络的拟合。</p>
+<p>那么如何将feature进行处理并根据FM和NN的特点来输入到对应的子模型中呢？在这里，我们借鉴了NLP领域中$ embedding$的思想，在NLP中，需要把word转化为向量，由于word经过one-hot编码后非常稀疏，embeeding通过构造一个矩阵来讲一个稀疏向量转化为指定维度的dense向量。</p>
+<h3 id="DeepFM"><a href="#DeepFM" class="headerlink" title="DeepFM"></a>DeepFM</h3><center><br><br><img src="/assets/fm/deepfm.jpg" width="80%" height="50%"><br><br></center>
 
 <h3 id="AFM"><a href="#AFM" class="headerlink" title="AFM"></a>AFM</h3><center><br><br><img src="/assets/fm/afm.jpg" width="80%" height="50%"><br><br></center>
       
@@ -435,6 +437,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">AI for System</a>
               </li>
              
               <li class="article-tag-list-item">
