@@ -9,15 +9,15 @@
   <title>A survey on Hot&amp;Data Separation | Teng 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="对于一个数据库系统，存储成本和性能永远是一个trade-off。  存储介质DRAM、NVM、SSD、HDD，存储成本逐渐降低，访问延迟也逐渐升高。很多数据库为了维持数据库的高性能，采用了纯内存的设计（In-memory DB），内存中存放全量的数据，如果有持久化的需求，那么数据库会在Disk上对数据进行备份，但对于内存数据库，用户正常的查询不会涉及磁盘I/O。 数据存在冷热之分，冷热数据有着">
-<meta name="keywords" content="Database,hot&cold data,paper">
+<meta name="keywords" content="Database,paper,hot cold data">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A survey on Hot&Data Separation">
-<meta property="og:url" content="http://tengz.me/2018/06/23/Life-Cycle-of-Transactional-Data-in-In-memory-Databases/index.html">
+<meta property="og:url" content="http://tengz.me/2018/06/23/A-Survey-on-Hot-Cold-Data-Separation/index.html">
 <meta property="og:site_name" content="Teng 的博客">
 <meta property="og:description" content="对于一个数据库系统，存储成本和性能永远是一个trade-off。  存储介质DRAM、NVM、SSD、HDD，存储成本逐渐降低，访问延迟也逐渐升高。很多数据库为了维持数据库的高性能，采用了纯内存的设计（In-memory DB），内存中存放全量的数据，如果有持久化的需求，那么数据库会在Disk上对数据进行备份，但对于内存数据库，用户正常的查询不会涉及磁盘I/O。 数据存在冷热之分，冷热数据有着">
 <meta property="og:image" content="http://tengz.me/assets/lifecycle/sz_2.jpg">
 <meta property="og:image" content="http://tengz.me/assets/lifecycle/sap_lifecycle_arch.png">
-<meta property="og:updated_time" content="2018-07-30T16:25:15.960Z">
+<meta property="og:updated_time" content="2018-08-03T02:20:05.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A survey on Hot&Data Separation">
 <meta name="twitter:description" content="对于一个数据库系统，存储成本和性能永远是一个trade-off。  存储介质DRAM、NVM、SSD、HDD，存储成本逐渐降低，访问延迟也逐渐升高。很多数据库为了维持数据库的高性能，采用了纯内存的设计（In-memory DB），内存中存放全量的数据，如果有持久化的需求，那么数据库会在Disk上对数据进行备份，但对于内存数据库，用户正常的查询不会涉及磁盘I/O。 数据存在冷热之分，冷热数据有着">
@@ -149,7 +149,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Life-Cycle-of-Transactional-Data-in-In-memory-Databases" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-A-Survey-on-Hot-Cold-Data-Separation" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -161,7 +161,7 @@
   
 
         
-        <a href="/2018/06/23/Life-Cycle-of-Transactional-Data-in-In-memory-Databases/" class="archive-article-date">
+        <a href="/2018/06/23/A-Survey-on-Hot-Cold-Data-Separation/" class="archive-article-date">
   	<time datetime="2018-06-23T15:08:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-23</time>
 </a>
         
@@ -212,11 +212,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">hot&cold data</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">paper</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">paper</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">hot cold data</a>
         		</li>
       		
 		</ul>
@@ -227,57 +227,6 @@
       
 
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://tengz.me/2018/06/23/Life-Cycle-of-Transactional-Data-in-In-memory-Databases/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
       <div class="clearfix"></div>
     </div>
   </div>
@@ -287,7 +236,7 @@
 <nav id="article-nav">
   
   
-    <a href="/2018/07/13/The Trend of Factorization Machine/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/07/13/The-Trend-of-Factorization-Machine/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">The Trend of Factorization Machines</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -456,6 +405,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">hot cold data</a>
               </li>
             
             <div class="clearfix"></div>
