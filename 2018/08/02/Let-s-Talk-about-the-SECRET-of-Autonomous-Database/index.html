@@ -17,7 +17,7 @@
 <meta property="og:description" content="随着全民AI的时代来临，各种智能系统甚嚣尘上，实际上，早在上个世纪中叶，数据库的概念就被提出并广泛应用于工业界，站在今天的角度来看，数据库就是一个智能系统。对于DB，你只需要告诉它你想要什么样的数据，并不需要关心数据存放在哪里以及获取的路径。传统数据库有着一套基于规则的智能引擎（SQL 解析，执行计划生成，索引构建等等）。但是，随着人工智能的演进，我们似乎可以把数据库的这种智能往前推进一些。在">
 <meta property="og:image" content="http://tengz.me/assets/autonomous_db/storm_melboure.jpg">
 <meta property="og:image" content="http://tengz.me/assets/autonomous_db/ai_db.png">
-<meta property="og:updated_time" content="2018-08-02T06:56:34.008Z">
+<meta property="og:updated_time" content="2018-08-22T16:14:02.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Let's Talk about the SECRET of Autonomous Database">
 <meta name="twitter:description" content="随着全民AI的时代来临，各种智能系统甚嚣尘上，实际上，早在上个世纪中叶，数据库的概念就被提出并广泛应用于工业界，站在今天的角度来看，数据库就是一个智能系统。对于DB，你只需要告诉它你想要什么样的数据，并不需要关心数据存放在哪里以及获取的路径。传统数据库有着一套基于规则的智能引擎（SQL 解析，执行计划生成，索引构建等等）。但是，随着人工智能的演进，我们似乎可以把数据库的这种智能往前推进一些。在">
@@ -169,11 +169,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <center><br><br><img src="/assets/autonomous_db/storm_melboure.jpg" width="100%" height="50%"><br><br></center>
+        <center><br><img src="/assets/autonomous_db/storm_melboure.jpg" width="100%" height="50%"><br><br></center>
 
 <p>随着全民AI的时代来临，各种智能系统甚嚣尘上，实际上，早在上个世纪中叶，数据库的概念就被提出并广泛应用于工业界，站在今天的角度来看，数据库就是一个智能系统。对于DB，你只需要告诉它你想要什么样的数据，并不需要关心数据存放在哪里以及获取的路径。传统数据库有着一套基于规则的智能引擎（SQL 解析，执行计划生成，索引构建等等）。但是，随着人工智能的演进，我们似乎可以把数据库的这种智能往前推进一些。在这篇文章中，我们将介绍AI技术是如何渗透到DB的各个子模块中（<strong>S</strong>torage、<strong>E</strong>lasticity、<strong>C</strong>onsistency、<strong>R</strong>etrieval、<strong>E</strong>volution、<strong>T</strong>ranslation）。</p>
 <a id="more"></a>
 <h2 id="AI-DB"><a href="#AI-DB" class="headerlink" title="AI + DB"></a>AI + DB</h2><center><br><br><img src="/assets/autonomous_db/ai_db.png" width="100%" height="50%"><br><br></center>
+
+<p>数据库作为一个基于规则的复杂系统，从数据的存储、索引的构建再到资源的调度，所有的设计都是”workload unaware”的，也就是说，我们的数据库对于所有的workload，无论是AP还是TP，无论是write-skew还是read-skew，系统都追求平衡的性能。</p>
+<p>随着业务的发展，数据量的急速扩张，存储引擎单机的峰值吞吐能力从原来的几万到几十万，再到几百万，似乎开始出现瓶颈。解决这个瓶颈的手段有两个，一个是新硬件，FPGA、GPU等定制型硬件提供的高并发性解决了数据库的性能问题，数据库中计算密集的操作，join、正则匹配、数据partition以及compaction等任务都可以offload到定制硬件上进行执行。</p>
+<p>如果说新硬件是为传统数据库提供了一个short path，”Leave is as it is”，数据库的链路并没有发生变化，该做join还是做join，该compaction还是会compaction，只不过这些子任务都会用专用硬件来解决。那么AI能给传统数据库带来什么？说实话，没有人知道，但是我们可以确定的是，Autonomous Database 给传统数据库带来了全新的解决方案，AI 就像水和电一样，它渗透进数据库的每一个子模块，为传统数据库重新赋能。</p>
+
       
 
       
@@ -350,23 +355,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">AI for System</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">hot cold data</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">paper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">AI for System</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">recsys</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -383,6 +380,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Machine Learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">recsys</a>
               </li>
             
             <div class="clearfix"></div>
